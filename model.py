@@ -18,8 +18,8 @@ from sklearn.model_selection import train_test_split
 from keras.models import load_model
 
 
-#Hyperparameters
-load_data = True
+# Script Parameters
+load_data = True # Used when image_data is stored as npy rather than raw images
 use_side_cameras = True
 model_name = 'jungle_model.h5'
 
@@ -59,7 +59,7 @@ def train_model(data_path, restart_model=True,epochs=3):
             images.append(flipped_image[20:64])
             angles.append(flipped_angle)
 
-	        # Use left and right cameras and slightly adjust 
+	    # Use left and right cameras and slightly adjust 
             if(use_side_cameras):
                 left_image = mpimg.imread(line[1])
                 right_image = mpimg.imread(line[2])
@@ -81,6 +81,7 @@ def train_model(data_path, restart_model=True,epochs=3):
 
     print(X_train.shape)
 
+    #If starting model from scratch define the model
     if(restart_model):
         model = Sequential()
         model.add(Lambda(lambda x: x/255.0 - 0.5, input_shape=input_shape))
@@ -97,19 +98,17 @@ def train_model(data_path, restart_model=True,epochs=3):
         
         model.compile(loss='mse',optimizer='adam')
         
+   # If training on a previous model	
     else:
         model = load_model(model_name)
 
     model.fit(X_train,y_train,validation_split=0.2,shuffle=True,epochs=epochs)
     model.save(model_name)
 
+	
+data_path = 'data/'
 
-main_data_path = 'data/new_data/'
-side_data_path = 'data/data2/'
-jungle_data_path = 'data/jungle_data/'
-#train_model(main_data_path, restart_model=True,epochs=3)
-#train_model(side_data_path, restart_model=False,epochs=3)
-train_model(jungle_data_path, restart_model=True,epochs=2)
+train_model(data_path, restart_model=True,epochs=2)
 
 
 
