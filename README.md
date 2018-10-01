@@ -1,7 +1,5 @@
 # End To End Autonomous Car
 
-# Simulated Self Driving Car Using Behavioral Cloning
-
 [//]: # (Image References)
 
 [image2]: ./images/TrainingCenter.jpg "Center Line Training"
