@@ -1,4 +1,4 @@
-# EndToEndAutonomousCar
+# End To End Autonomous Car
 
 # Simulated Self Driving Car Using Behavioral Cloning
 
@@ -56,7 +56,7 @@ I initially started my network with a convolutional network similar to LeNet. Ho
 I didn't feel I needed to copy it outright as it is a more complex model for a more complex problem with higher resolution of data (I resized my data to 64x64) but I did add another convolutional layer as well as increasing the filter depths to higher levels for each convolutional layer. 
 
 
-####2. Final Model Architecture
+#### 2. Final Model Architecture
 
 The final model architecture (model.py lines 84-95) consisted of a convolution neural network with the following layers and layer sizes:
 
@@ -75,7 +75,7 @@ The final model architecture (model.py lines 84-95) consisted of a convolution n
 -Dense hidden layer of 48 neurons
 -Output layer of 1 steering angle
 
-####3. Creation of the Training Set & Training Process
+#### 3. Creation of the Training Set & Training Process
 
 To capture good driving behavior, I first recorded two laps on track one using center lane driving. Here is an example image of center lane driving:
 
